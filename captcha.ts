@@ -8,31 +8,32 @@ export default class Captcha {
     }
 
     toText(): string{
-        let numRight = filterNumber(this.right);
-        let isOperand = filterOperand(this.operand);
+        let numRight = this.filterNumber(this.right);
+        let isOperand = this.filterOperand(this.operand);
         if(this.pattern === 1){
             return `${this.left} ${isOperand} ${numRight}`;
         } else if(this.pattern === 2){
             return `${numRight} ${isOperand} ${this.left}`;
         }
     }
-}
+    
+    private filterNumber(int: number) {
+        if(int === 1){
+            return 'One'
+        } else if(int === 2){
+            return 'Two'
+        }
+    }
 
-function filterNumber (int: number){
-    if(int === 1){
-        return 'One'
-    } else if(int === 2){
-        return 'Two'
+    private filterOperand(int: number) {
+        if(int === 1){
+            return '+';
+        } else if(int === 2){
+            return '-';
+        } else if(int === 3){
+            return 'x';
+        }
     }
 }
 
-function filterOperand (int: number) {
-    if(int === 1){
-        return '+';
-    } else if(int === 2){
-        return '-';
-    } else if(int === 3){
-        return 'x';
-    }
-}
 
