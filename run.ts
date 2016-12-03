@@ -6,4 +6,10 @@
 import Captcha from './captcha';
 
 let captcha = new Captcha(1, 1, 1, 1);
+let captcha2 = new Captcha(1, 1, 2, 1);
+let captcha3 = new Captcha(1, 2, 2, 1);
+let captcha4 = new Captcha(2, 2, 2, 1);
 console.log(captcha.toText());
+console.log(captcha2.toText());
+console.log(captcha3.toText());
+console.log(captcha4.toText());
