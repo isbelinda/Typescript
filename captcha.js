@@ -9,12 +9,20 @@ var Captcha = (function () {
     Captcha.prototype.toText = function () {
         var numRight = this.filterNumber(this.right);
         var isOperand = this.filterOperand(this.operand);
-        if (this.pattern === 1) {
-            return this.left + " " + isOperand + " " + numRight;
+        var output;
+        switch (this.pattern) {
+            case 1:
+                output = this.left + " " + isOperand + " " + numRight;
+                break;
+            case 2:
+                output = numRight + " " + isOperand + " " + this.left;
         }
-        else if (this.pattern === 2) {
-            return numRight + " " + isOperand + " " + this.left;
-        }
+        return output;
+        // if(this.pattern === 1){
+        //     return `${this.left} ${isOperand} ${numRight}`;
+        // } else if(this.pattern === 2){
+        //     return `${numRight} ${isOperand} ${this.left}`;
+        // }
     };
     Captcha.prototype.filterNumber = function (int) {
         if (int === 1) {

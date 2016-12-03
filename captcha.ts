@@ -10,11 +10,18 @@ export default class Captcha {
     toText(): string{
         let numRight = this.filterNumber(this.right);
         let isOperand = this.filterOperand(this.operand);
-        if(this.pattern === 1){
-            return `${this.left} ${isOperand} ${numRight}`;
-        } else if(this.pattern === 2){
-            return `${numRight} ${isOperand} ${this.left}`;
+        let output;
+        
+        switch (this.pattern){
+            case 1:
+                output = `${this.left} ${isOperand} ${numRight}`;
+                break;
+            
+            case 2:
+                output = `${numRight} ${isOperand} ${this.left}`;
         }
+        
+        return output;
     }
     
     private filterNumber(int: number) {
